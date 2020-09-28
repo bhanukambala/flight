@@ -18,6 +18,9 @@ public class Flight {
 		this.carrierName=carrierName;
 		this.seatCapacity=seatCapacity;
 	}
+	public Flight() {
+		
+	}
 
 	public Integer getFlightNum() {
 		return flightNum;
