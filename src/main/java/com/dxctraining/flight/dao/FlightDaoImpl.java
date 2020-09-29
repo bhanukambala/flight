@@ -1,5 +1,6 @@
 package com.dxctraining.flight.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class FlightDaoImpl implements IFlightDao{
 	}
 
 	@Override
-	public Flight viewByFlightNum(Integer flightNum) {
+	public Flight viewByFlightNum(BigInteger flightNum) {
 
 		Flight flight = entityManager.find(Flight.class, flightNum);
 		if (flight == null) {
@@ -45,7 +46,7 @@ public class FlightDaoImpl implements IFlightDao{
 
 	
 			@Override
-	public void delete(Integer flightNum) {
+	public void delete(BigInteger flightNum) {
 		Flight flight=viewByFlightNum(flightNum);
 		entityManager.remove(flight);
 		

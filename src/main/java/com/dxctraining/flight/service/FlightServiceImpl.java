@@ -1,15 +1,13 @@
 package com.dxctraining.flight.service;
 
+import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dxctraining.flight.dao.IFlightDao;
 import com.dxctraining.flight.entities.Flight;
-import com.dxctraining.flight.exception.FlightNotFoundException;
 import com.dxctraining.flight.exception.InvalidArgumentException;
 
 @Transactional
@@ -30,7 +28,7 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 	@Override
-	public Flight viewByFlightNum(Integer flightNum) {
+	public Flight viewByFlightNum(BigInteger flightNum) {
 		validate(flightNum);
 		return dao.viewByFlightNum(flightNum);
 	}
@@ -42,7 +40,7 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 	@Override
-	public void delete(Integer flightNum) {
+	public void delete(BigInteger flightNum) {
 		validate(flightNum);
 		dao.delete(flightNum);	
 	}

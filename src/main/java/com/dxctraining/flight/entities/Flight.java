@@ -1,4 +1,6 @@
 package com.dxctraining.flight.entities;
+import java.math.BigInteger;
+
 import javax.persistence.*;
 
 
@@ -8,7 +10,7 @@ import javax.persistence.*;
 public class Flight {
 	@Id
 	@GeneratedValue
-	private Integer flightNum;
+	private BigInteger flightNum;
 	private String flightModel;
 	private String carrierName;
 	private int seatCapacity;
@@ -22,14 +24,13 @@ public class Flight {
 		
 	}
 
-	public Integer getFlightNum() {
+	
+	public BigInteger getFlightNum() {
 		return flightNum;
 	}
-
-	public void setFlightNum(Integer flightNum) {
+	public void setFlightNum(BigInteger flightNum) {
 		this.flightNum = flightNum;
 	}
-
 	public String getFlightModel() {
 		return flightModel;
 	}

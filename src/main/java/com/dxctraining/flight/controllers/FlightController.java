@@ -1,5 +1,7 @@
 package com.dxctraining.flight.controllers;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +42,7 @@ public class FlightController {
 
 	@GetMapping("/get/{flightNum}")
 	@ResponseStatus(HttpStatus.OK)
-	public FlightDto viewBy(@PathVariable("flightNum") Integer flightNum) {
+	public FlightDto viewBy(@PathVariable("flightNum") BigInteger flightNum) {
 		Flight flight = service.viewByFlightNum(flightNum);
 		FlightDto response = util.flightDto(flight);
 		return response;

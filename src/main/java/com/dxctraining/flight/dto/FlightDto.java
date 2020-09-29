@@ -1,25 +1,30 @@
 package com.dxctraining.flight.dto;
 
+import java.math.BigInteger;
+
 public class FlightDto {
-	private Integer flightNum;
+	private BigInteger flightNum;
 	private String flightModel;
 	private String carrierName;
 	private int seatCapacity;
 	
-	public FlightDto(Integer flightNum,String flightModel,String carrierName,int seatCapacity) {
+	public FlightDto(BigInteger flightNum,String flightModel,String carrierName,int seatCapacity) {
 		this.flightNum=flightNum;
 		this.flightModel=flightModel;
 		this.carrierName=carrierName;
 		this.seatCapacity=seatCapacity;
 	}
 
-	public Integer getFlightNum() {
+	
+	public BigInteger getFlightNum() {
 		return flightNum;
 	}
 
-	public void setFlightNum(Integer flightNum) {
+
+	public void setFlightNum(BigInteger flightNum) {
 		this.flightNum = flightNum;
 	}
+
 
 	public String getFlightModel() {
 		return flightModel;
