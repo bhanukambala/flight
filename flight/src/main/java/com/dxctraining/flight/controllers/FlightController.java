@@ -1,7 +1,7 @@
 package com.dxctraining.flight.controllers;
 
 import java.math.BigInteger;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,9 +42,10 @@ public class FlightController {
 		FlightDto response = util.flightDto(flight);
 		return response;
 	}
+	
 	@GetMapping(value = "/list")
 	@ResponseStatus(HttpStatus.OK)
-    private List<Flight> viewAllFlights(){
+    public List<Flight> viewAllFlights(){
         return service.viewAllFlights();
     }
 		@PutMapping("/modify")

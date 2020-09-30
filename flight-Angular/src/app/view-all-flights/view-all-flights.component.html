@@ -19,7 +19,7 @@
                 <td> {{flight.carrierName}} </td>
                 <td>{{flight.seatCapacity}}</td>              
                 <td>
-                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=delete(flight.flightNum)>Delete</button>
+                    <button (click)="delete(flight.flightNum)">Delete</button>
                 </td>
                 
             </tr>

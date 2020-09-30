@@ -23,13 +23,21 @@ flights:Flight[];
       let observable=this.flightService.delete(flightNum);
       observable.subscribe(
         res=>{
-         this.delete(flightNum);
+         this.deleteFlight(flightNum);
         },
         err=>{
           console.log("inside deleteFlight, err is "+err.message);
         }
       );
        }
-     
+     deleteFlight(flightNum:number):void{
+       console.log("before deleting flight,length="+this.flights.length);
+       for(let i=0 ;i<this.flights.length;i++ ){
+        let flight=this.flights[i];
+         if(flight.flightNum===flightNum){
+              this.flights.splice(i,1);
+         }
+      }
+     }
    }
 
