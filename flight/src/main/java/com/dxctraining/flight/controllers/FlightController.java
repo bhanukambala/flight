@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.dxctraining.flight.dto.CreateFlightRequest;
 import com.dxctraining.flight.dto.FlightDto;
 import com.dxctraining.flight.entities.Flight;
+import com.dxctraining.flight.exception.FlightNotFoundException;
 import com.dxctraining.flight.service.IFlightService;
 import com.dxctraining.flight.util.FlightUtil;
 
@@ -46,13 +47,21 @@ public class FlightController {
     private List<Flight> viewAllFlights(){
         return service.viewAllFlights();
     }
-	  @PutMapping(value = "/modify/{flightNum}")
-	  @ResponseStatus(HttpStatus.OK)
-	    public Flight modifyFlight(@PathVariable(value = "flightNum")BigInteger flightNum){
-	    	Flight flight = service.viewByFlightNum(flightNum);
-	    	
-	    	return flight;
-	    }
+		@PutMapping("/modify")
+	public FlightDto modify(@RequestBody CreateFlightRequest requestData) {
+			Flight flight = new Flight();
+			flight.setFlightModel(requestData.getFlightModel());
+			flight.setCarrierName(requestData.getCarrierName());
+			flight.setSeatCapacity(requestData.getSeatCapacity());
+		flight = service.modifyFlight(flight);
+		FlightDto response=util.flightDto(flight);
+		if (flight == null) {
+			throw new FlightNotFoundException("Update Operation Unsuccessful");
+		} else {
+			return response;
+		}
+	}
+
 	  @DeleteMapping(value = "/delete/{flightNum}")
 	    private void delete(@PathVariable(value = "flightNum")BigInteger flightNum){
 	    	service.delete(flightNum);
